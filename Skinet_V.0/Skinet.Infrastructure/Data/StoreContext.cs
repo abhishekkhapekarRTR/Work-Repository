@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Skinet.Core.Entities;
+using System.Reflection;
 
 namespace Skinet.Infrastructure.Data
 {
@@ -12,6 +13,16 @@ namespace Skinet.Infrastructure.Data
         #region entity classes
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<ProductBrand> ProductBrand { get; set; }
+
+        public DbSet<ProductType> ProductType { get; set; }
+
         #endregion
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
     }
 }
