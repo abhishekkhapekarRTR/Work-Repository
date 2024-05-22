@@ -3,4 +3,13 @@
 
 <div class="container" style="margin-top: 140px;">
     <h3>Welcom to  {{title}}</h3>
+    <ul>
+        @for (product of products; track product.id) {
+            <li class="list-unstyled">
+                {{product.name}}
+            </li>
+        } @empty {
+            Empty list of products
+        }
+    </ul>
 </div>
